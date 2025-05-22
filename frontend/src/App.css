@@ -1,38 +1,55 @@
-.App {
-    text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Toggle switch styling */
+.toggle-checkbox:checked {
+  right: 0;
+  border-color: #4f46e5;
+}
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #4f46e5;
+}
+.toggle-label {
+  width: 2.5rem;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* DatePicker custom styling */
+.react-datepicker-wrapper {
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Remove the default arrow from number inputs */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
 
-.App-link {
-    color: #61dafb;
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Animation for countdown display */
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.countdown-complete {
+  animation: pulse 2s infinite;
 }
