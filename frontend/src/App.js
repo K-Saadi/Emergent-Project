@@ -206,12 +206,12 @@ const Home = () => {
 
   return (
     <div className="container mx-auto px-4 pb-20 pt-4">
-      <h1 className="text-2xl font-bold text-center my-6">Countdown & Habits Tracker</h1>
+      <h1 className="text-2xl font-bold text-center my-6 text-gray-900 dark:text-white">Countdown & Habits Tracker</h1>
       
       <div className="mb-8">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">Upcoming Countdowns</h2>
-          <Link to="/countdowns" className="text-blue-600 flex items-center">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Upcoming Countdowns</h2>
+          <Link to="/countdowns" className="text-blue-600 dark:text-blue-400 flex items-center">
             View All <FiChevronRight />
           </Link>
         </div>
@@ -221,14 +221,14 @@ const Home = () => {
             {activeCountdowns.map(countdown => {
               const timeRemaining = calculateTimeRemaining(countdown.target_date);
               return (
-                <div key={countdown.id} className="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
-                  <h3 className="font-medium text-lg">{countdown.title}</h3>
-                  <p className="text-gray-600 text-sm">{countdown.description}</p>
-                  <div className="mt-2 font-mono text-sm">
+                <div key={countdown.id} className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 border-l-4 border-blue-500">
+                  <h3 className="font-medium text-lg text-gray-900 dark:text-white">{countdown.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">{countdown.description}</p>
+                  <div className="mt-2 font-mono text-sm text-gray-900 dark:text-gray-300">
                     {timeRemaining.days > 0 && `${timeRemaining.days}d `}
                     {timeRemaining.hours}h {timeRemaining.minutes}m {timeRemaining.seconds}s
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
+                  <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                     Target: {formatDate(countdown.target_date)}
                   </div>
                 </div>
@@ -236,9 +236,9 @@ const Home = () => {
             })}
           </div>
         ) : (
-          <div className="text-center py-4 bg-gray-50 rounded-lg">
-            <p className="text-gray-500">No active countdowns</p>
-            <Link to="/countdowns/new" className="text-blue-600 flex items-center justify-center mt-2">
+          <div className="text-center py-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <p className="text-gray-500 dark:text-gray-400">No active countdowns</p>
+            <Link to="/countdowns/new" className="text-blue-600 dark:text-blue-400 flex items-center justify-center mt-2">
               <FiPlus className="mr-1" /> Add Countdown
             </Link>
           </div>
@@ -247,8 +247,8 @@ const Home = () => {
       
       <div>
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">Today's Habits</h2>
-          <Link to="/habits" className="text-blue-600 flex items-center">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Today's Habits</h2>
+          <Link to="/habits" className="text-blue-600 dark:text-blue-400 flex items-center">
             View All <FiChevronRight />
           </Link>
         </div>
@@ -256,24 +256,24 @@ const Home = () => {
         {todayHabits.length > 0 ? (
           <div className="space-y-4">
             {todayHabits.map(habit => (
-              <div key={habit.id} className="bg-white rounded-lg shadow p-4 border-l-4 border-green-500">
-                <h3 className="font-medium text-lg">{habit.title}</h3>
-                <p className="text-gray-600 text-sm">{habit.description}</p>
-                <div className="text-xs text-gray-500 mt-2">
+              <div key={habit.id} className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 border-l-4 border-green-500">
+                <h3 className="font-medium text-lg text-gray-900 dark:text-white">{habit.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">{habit.description}</p>
+                <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
                   {habit.frequency === "daily" && "Daily habit"}
                   {habit.frequency === "weekly" && "Weekly habit"}
                   {habit.frequency === "custom" && "Custom schedule"}
                 </div>
-                <Link to={`/habits/${habit.id}/log`} className="mt-2 inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">
+                <Link to={`/habits/${habit.id}/log`} className="mt-2 inline-block px-3 py-1 bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100 rounded-full text-xs">
                   Log completion
                 </Link>
               </div>
             ))}
           </div>
         ) : (
-          <div className="text-center py-4 bg-gray-50 rounded-lg">
-            <p className="text-gray-500">No habits scheduled for today</p>
-            <Link to="/habits/new" className="text-blue-600 flex items-center justify-center mt-2">
+          <div className="text-center py-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <p className="text-gray-500 dark:text-gray-400">No habits scheduled for today</p>
+            <Link to="/habits/new" className="text-blue-600 dark:text-blue-400 flex items-center justify-center mt-2">
               <FiPlus className="mr-1" /> Add Habit
             </Link>
           </div>
