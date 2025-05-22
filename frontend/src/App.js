@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 import { BrowserRouter, Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
 import { format, parseISO, differenceInSeconds, addMinutes } from "date-fns";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { FiClock, FiCheckSquare, FiPlus, FiTrash2, FiEdit, FiChevronRight, FiX, FiHome, FiCalendar, FiBarChart2 } from "react-icons/fi";
+import { FiClock, FiCheckSquare, FiPlus, FiTrash2, FiEdit, FiChevronRight, FiX, FiHome, FiCalendar, FiBarChart2, FiMoon, FiSun } from "react-icons/fi";
 import axios from "axios";
 import "./App.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title } from 'chart.js';
