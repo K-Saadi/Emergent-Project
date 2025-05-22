@@ -1615,35 +1615,37 @@ const StatsOverview = () => {
 
 function App() {
   return (
-    <div className="App bg-gray-100 min-h-screen">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
+    <ThemeProvider>
+      <div className="App bg-gray-100 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-gray-100">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            
+            {/* Countdown Routes */}
+            <Route path="/countdowns" element={<CountdownsList />} />
+            <Route path="/countdowns/new" element={<CountdownForm />} />
+            <Route path="/countdowns/edit/:id" element={<CountdownForm />} />
+            
+            {/* Habit Routes */}
+            <Route path="/habits" element={<HabitsList />} />
+            <Route path="/habits/new" element={<HabitForm />} />
+            <Route path="/habits/edit/:id" element={<HabitForm />} />
+            <Route path="/habits/:id/stats" element={<HabitStats />} />
+            
+            {/* Categories */}
+            <Route path="/categories" element={<CategoriesList />} />
+            
+            {/* Stats */}
+            <Route path="/stats" element={<StatsOverview />} />
+            
+            {/* Fallback */}
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
           
-          {/* Countdown Routes */}
-          <Route path="/countdowns" element={<CountdownsList />} />
-          <Route path="/countdowns/new" element={<CountdownForm />} />
-          <Route path="/countdowns/edit/:id" element={<CountdownForm />} />
-          
-          {/* Habit Routes */}
-          <Route path="/habits" element={<HabitsList />} />
-          <Route path="/habits/new" element={<HabitForm />} />
-          <Route path="/habits/edit/:id" element={<HabitForm />} />
-          <Route path="/habits/:id/stats" element={<HabitStats />} />
-          
-          {/* Categories */}
-          <Route path="/categories" element={<CategoriesList />} />
-          
-          {/* Stats */}
-          <Route path="/stats" element={<StatsOverview />} />
-          
-          {/* Fallback */}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-        
-        <Navigation />
-      </BrowserRouter>
-    </div>
+          <Navigation />
+        </BrowserRouter>
+      </div>
+    </ThemeProvider>
   );
 }
 
