@@ -124,25 +124,33 @@ const calculateTimeRemaining = (targetDate) => {
 // Navigation Component
 const Navigation = () => {
   const location = useLocation();
+  const { darkMode, toggleDarkMode } = useTheme();
   
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 py-2 px-4 flex justify-around z-10">
-      <Link to="/" className={`flex flex-col items-center p-2 ${location.pathname === '/' ? 'text-blue-600' : 'text-gray-600'}`}>
+    <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-2 px-4 flex justify-around z-10">
+      <Link to="/" className={`flex flex-col items-center p-2 ${location.pathname === '/' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-400'}`}>
         <FiHome size={24} />
         <span className="text-xs mt-1">Home</span>
       </Link>
-      <Link to="/countdowns" className={`flex flex-col items-center p-2 ${location.pathname.includes('/countdowns') ? 'text-blue-600' : 'text-gray-600'}`}>
+      <Link to="/countdowns" className={`flex flex-col items-center p-2 ${location.pathname.includes('/countdowns') ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-400'}`}>
         <FiClock size={24} />
         <span className="text-xs mt-1">Countdowns</span>
       </Link>
-      <Link to="/habits" className={`flex flex-col items-center p-2 ${location.pathname.includes('/habits') ? 'text-blue-600' : 'text-gray-600'}`}>
+      <Link to="/habits" className={`flex flex-col items-center p-2 ${location.pathname.includes('/habits') ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-400'}`}>
         <FiCheckSquare size={24} />
         <span className="text-xs mt-1">Habits</span>
       </Link>
-      <Link to="/stats" className={`flex flex-col items-center p-2 ${location.pathname.includes('/stats') ? 'text-blue-600' : 'text-gray-600'}`}>
+      <Link to="/stats" className={`flex flex-col items-center p-2 ${location.pathname.includes('/stats') ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-400'}`}>
         <FiBarChart2 size={24} />
         <span className="text-xs mt-1">Stats</span>
       </Link>
+      <button 
+        onClick={toggleDarkMode}
+        className="flex flex-col items-center p-2 text-gray-600 dark:text-gray-400"
+      >
+        {darkMode ? <FiSun size={24} /> : <FiMoon size={24} />}
+        <span className="text-xs mt-1">{darkMode ? 'Light' : 'Dark'}</span>
+      </button>
     </div>
   );
 };
